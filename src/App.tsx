@@ -8,6 +8,7 @@ import BookingProcess from './pages/BookingProcess/BookingProcess';
 import MyRentals from './pages/MyRentals/MyRentals';
 import Profile from './pages/Profile/Profile';
 import Help from './pages/Help/Help';
+import RentalDetails from './pages/MyRentals/RentalDetails';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="rentals" element={<MyRentals />} />
           <Route path="profile" element={<Profile />} />
           <Route path="help" element={<Help />} />
+          <Route path="rentals/:id" element={<RentalDetails />} />
         </Route>
       </Routes>
     </>

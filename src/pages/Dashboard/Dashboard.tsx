@@ -26,7 +26,7 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div className="lg:col-span-2">
-          <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl shadow-md p-6 text-white">
+          <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl shadow-md p-6 text-white">
             <h2 className="text-xl font-semibold mb-4">Quick Search</h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1">
@@ -49,7 +49,7 @@ const Dashboard = () => {
                   <MapPin size={20} className="absolute left-3 top-3.5 text-gray-500" />
                 </div>
               </div>
-              <Link to="/search" className="btn-primary bg-white text-teal-600 hover:bg-gray-100 flex items-center justify-center sm:w-auto px-6">
+              <Link to="/search" className="btn-primary bg-white text-purple-600 hover:bg-gray-100 flex items-center justify-center sm:w-auto px-6">
                 Search
               </Link>
             </div>
@@ -59,10 +59,10 @@ const Dashboard = () => {
         <div className="bg-white rounded-xl shadow-md p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold">Trust Score</h2>
-            <span className="text-teal-600 font-bold text-xl">8.5/10</span>
+            <span className="text-purple-600 font-bold text-xl">8.5/10</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <div className="bg-teal-600 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+            <div className="bg-purple-600 h-2.5 rounded-full" style={{ width: '85%' }}></div>
           </div>
           <ul className="space-y-2">
             <li className="flex items-center text-sm">
@@ -86,7 +86,7 @@ const Dashboard = () => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold">Active Rentals</h2>
-              <Link to="/rentals" className="text-teal-600 text-sm hover:underline">View all</Link>
+              <Link to="/rentals" className="text-purple-600 text-sm hover:underline">View all</Link>
             </div>
             {activeRentals.length > 0 ? (
               <div className="space-y-4">
@@ -108,7 +108,7 @@ const Dashboard = () => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold">Upcoming Rentals</h2>
-              <Link to="/rentals" className="text-teal-600 text-sm hover:underline">View all</Link>
+              <Link to="/rentals" className="text-purple-600 text-sm hover:underline">View all</Link>
             </div>
             {upcomingRentals.length > 0 ? (
               <div className="space-y-4">

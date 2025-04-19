@@ -15,6 +15,7 @@ interface KanbanBoardProps {
 const KanbanBoard = ({ rentals, onRentalUpdate }: KanbanBoardProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const columns = {
     active: {
@@ -41,13 +42,18 @@ const KanbanBoard = ({ rentals, onRentalUpdate }: KanbanBoardProps) => {
   };
 
   const handleDragStart = (event: any) => {
+    setIsDragging(true);
     setActiveId(event.active.id);
   };
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
     
-    if (!over) return;
+    if (!over) {
+      setIsDragging(false);
+      setActiveId(null);
+      return;
+    }
 
     const activeColumn = Object.entries(columns).find(([_, column]) => 
       column.rentals.some(rental => rental.id === active.id)
@@ -59,6 +65,12 @@ const KanbanBoard = ({ rentals, onRentalUpdate }: KanbanBoardProps) => {
       onRentalUpdate(active.id, overColumn as 'active' | 'upcoming' | 'past');
     }
 
+    setIsDragging(false);
+    setActiveId(null);
+  };
+
+  const handleDragCancel = () => {
+    setIsDragging(false);
     setActiveId(null);
   };
 
@@ -83,6 +95,7 @@ const KanbanBoard = ({ rentals, onRentalUpdate }: KanbanBoardProps) => {
         collisionDetection={closestCorners}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {Object.entries(columns).map(([columnId, column]) => (
@@ -92,6 +105,7 @@ const KanbanBoard = ({ rentals, onRentalUpdate }: KanbanBoardProps) => {
               title={column.title}
               color={column.color}
               rentals={column.rentals}
+              isDragging={isDragging}
             />
           ))}
         </div>

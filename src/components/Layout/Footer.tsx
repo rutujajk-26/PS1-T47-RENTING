@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-white border-t border-gray-200 py-4 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
-          <span className="text-teal-600 font-bold text-lg">Paisa hi Paisa</span>
+          <span className="text-purple-600 font-bold text-lg">Paisa hi Paisa</span>
           <p className="text-sm text-gray-500">Share more, own less.</p>
         </div>
         <div className="flex space-x-6">

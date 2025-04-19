@@ -33,16 +33,16 @@
 
 @layer components {
   .heading-primary {
-    color: #7cebed;
+    color: #7c3bed;
   }
 
   .link-primary {
-    color: #7cebed;
+    color: #7c3bed;
     transition: color 0.2s ease-in-out;
   }
 
   .link-primary:hover {
-    color: #00d9d9;
+    color: #7c3bed;
   }
 
   .btn {
@@ -50,39 +50,39 @@
   }
   
   .btn-primary {
-    background-color: #7cebed;
+    background-color: #7c3bed;
     color: white;
     transition: background-color 0.2s ease-in-out;
   }
 
   .btn-primary:hover {
-    background-color: #00d9d9;
+    background-color: #7c3bed;
   }
 
   .btn-primary:focus {
     @apply ring-2 ring-offset-2;
-    --tw-ring-color: #7cebed;
+    --tw-ring-color: #7c3bed;
   }
   
   .btn-secondary {
-    background-color: #33e7e7;
+    background-color: #7c3bed;
     color: white;
     transition: background-color 0.2s ease-in-out;
   }
 
   .btn-secondary:hover {
-    background-color: #7cebed;
+    background-color: #7c3bed;
   }
 
   .btn-secondary:focus {
     @apply ring-2 ring-offset-2;
-    --tw-ring-color: #33e7e7;
+    --tw-ring-color: #7c3bed;
   }
   
   .btn-outline {
     @apply bg-white;
-    border: 1px solid #7cebed;
-    color: #7cebed;
+    border: 1px solid #7c3bed;
+    color: #7c3bed;
     transition: all 0.2s ease-in-out;
   }
 
@@ -92,7 +92,7 @@
 
   .btn-outline:focus {
     @apply ring-2 ring-offset-2;
-    --tw-ring-color: #7cebed;
+    --tw-ring-color: #7c3bed;
   }
   
   .card {
@@ -104,7 +104,7 @@
   }
 
   .input:focus {
-    --tw-ring-color: #7cebed;
+    --tw-ring-color: #7c3bed;
   }
   
   .badge {
@@ -137,8 +137,8 @@
 
   .nav-active {
     background-color: #f0fdfd;
-    color: #7cebed;
-    border-left: 4px solid #7cebed;
+    color: #7c3bed;
+    border-left: 4px solid #7c3bed;
   }
 }
 

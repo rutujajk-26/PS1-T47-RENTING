@@ -29,7 +29,7 @@ const Navbar = () => {
               <Menu size={20} />
             </button>
             <Link to="/" className="flex items-center ml-2 md:ml-0">
-              <span className="text-teal-600 font-bold text-xl">Paisa hi Paisa</span>
+              <span className="text-purple-600 font-bold text-xl">Paisa hi Paisa</span>
             </Link>
           </div>
 

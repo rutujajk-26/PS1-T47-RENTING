@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Filter, Map, Grid, List, Search as SearchIcon, Sliders, X } from 'lucide-react';
+import { Filter, Map, Grid, List, Search as SearchIcon, Sliders, X, MapPin } from 'lucide-react';
 import { mockItems } from '../../data/mockData';
 import { Item } from '../../types';
 import ItemCard from './ItemCard';
@@ -14,6 +14,8 @@ const ItemSearch = () => {
   const [searchParams] = useState(() => new URLSearchParams(location.search));
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [locationQuery, setLocationQuery] = useState(searchParams.get('location') || '');
+  const [suggestedLocations, setSuggestedLocations] = useState<string[]>([]);
+  const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list' | 'map'>('grid');
   const [items, setItems] = useState<Item[]>([]);
   const [filteredItems, setFilteredItems] = useState<Item[]>([]);
@@ -24,6 +26,41 @@ const ItemSearch = () => {
     condition: [] as string[],
     availability: null as Date | null
   });
+
+  // Mock location suggestions - Replace with actual API call
+  const getLocationSuggestions = (query: string) => {
+    const mockLocations = [
+      'Mumbai, Maharashtra',
+      'Delhi, India',
+      'Bangalore, Karnataka',
+      'Hyderabad, Telangana',
+      'Chennai, Tamil Nadu',
+      'Kolkata, West Bengal',
+      'Pune, Maharashtra',
+      'Ahmedabad, Gujarat',
+      'Jaipur, Rajasthan',
+      'Lucknow, Uttar Pradesh'
+    ];
+    return mockLocations.filter(loc => 
+      loc.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
+  useEffect(() => {
+    if (locationQuery.length > 2) {
+      const suggestions = getLocationSuggestions(locationQuery);
+      setSuggestedLocations(suggestions);
+      setShowLocationSuggestions(true);
+    } else {
+      setSuggestedLocations([]);
+      setShowLocationSuggestions(false);
+    }
+  }, [locationQuery]);
+
+  const handleLocationSelect = (selectedLocation: string) => {
+    setLocationQuery(selectedLocation);
+    setShowLocationSuggestions(false);
+  };
 
   useEffect(() => {
     // Simulate API fetch
@@ -149,8 +186,25 @@ const ItemSearch = () => {
               className="input pl-10"
               value={locationQuery}
               onChange={(e) => setLocationQuery(e.target.value)}
+              onFocus={() => locationQuery.length > 2 && setShowLocationSuggestions(true)}
             />
-            <Map size={18} className="absolute left-3 top-3 text-gray-400" />
+            <MapPin size={18} className="absolute left-3 top-3 text-gray-400" />
+            {showLocationSuggestions && suggestedLocations.length > 0 && (
+              <div className="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-60 overflow-y-auto">
+                {suggestedLocations.map((location, index) => (
+                  <button
+                    key={index}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-50 focus:bg-gray-50"
+                    onClick={() => handleLocationSelect(location)}
+                  >
+                    <div className="flex items-center">
+                      <MapPin size={14} className="mr-2 text-gray-400" />
+                      <span>{location}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           <button type="submit" className="btn btn-primary sm:w-auto">
             Search
