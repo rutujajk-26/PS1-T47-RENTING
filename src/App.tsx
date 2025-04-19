@@ -9,14 +9,16 @@ import MyRentals from './pages/MyRentals/MyRentals';
 import Profile from './pages/Profile/Profile';
 import Help from './pages/Help/Help';
 import RentalDetails from './pages/MyRentals/RentalDetails';
+import Landing from './pages/Landing/Landing';
 
 function App() {
   return (
     <>
       <Toaster position="top-right" />
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="search" element={<ItemSearch />} />
           <Route path="item/:id" element={<ItemDetail />} />
           <Route path="booking/:id" element={<BookingProcess />} />
